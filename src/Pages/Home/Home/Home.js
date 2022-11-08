@@ -1,4 +1,5 @@
 import React from 'react';
+import { useContext } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import image1 from '../../../assets/slider/doctor.jpg';
 import image2 from '../../../assets/slider/doctor1.jpg';
@@ -10,7 +11,7 @@ import SliderButton from '../SliderButton/SliderButton';
 const Home = () => {
 
     const services = useLoaderData();
-    console.log(services)
+    // console.log(services)
 
     const carouselData = [
         {
