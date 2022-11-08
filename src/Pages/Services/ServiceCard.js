@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const serviceCard = ({singleService}) => {
+const ServiceCard = ({singleService}) => {
 
     const {_id, name, price, details, photoUrl} = singleService;
     console.log(_id, name, price, details, photoUrl)
@@ -16,10 +16,10 @@ const serviceCard = ({singleService}) => {
     <div className="card-actions justify-end">
       <div className="badge badge-outline">Visit: ${price}</div> 
     </div>
-      <Link to={`/serviceDetails/:${_id}`}><button className="btn btn-outline btn-accent">Details</button></Link>
+      <Link to={`/services/${_id}`}><button className="btn btn-outline btn-accent">Details</button></Link>
   </div>
 </div>
     );
 };
 
-export default serviceCard;
+export default ServiceCard;

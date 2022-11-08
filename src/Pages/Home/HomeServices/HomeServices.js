@@ -8,7 +8,7 @@ const HomeServices = ({service}) => {
             <figure><img className='' src={photoUrl} alt="Album" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{name}</h2>
-                <p>{details.slice(0,100)}</p>
+                <p>{details}</p>
                 <p className='text-sm'>Visit: ${price}</p>
 
                 {/* <div className="card-actions justify-end">
