@@ -37,7 +37,7 @@ const Review = ({ data }) => {
                 toast('Review added successfully');
                 event.target.reset();
                 // loading(false)
-                navigate('/review')
+                // navigate('/review')
             })
     }
 
@@ -66,9 +66,9 @@ const Review = ({ data }) => {
                     <thead>
                         <tr>
                             <th>
-                                <label>
+                                {/* <label>
                                     <input type="checkbox" className="checkbox" />
-                                </label>
+                                </label> */}
                             </th>
                             <th>Reviewed by</th>
 

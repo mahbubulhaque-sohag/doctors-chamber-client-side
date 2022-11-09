@@ -32,7 +32,7 @@ const Navbar = () => {
           {
             user?.uid ? <>
               <li><Link to='/addService'>Add Service</Link></li>
-              <li><Link>My Reviews</Link></li>
+              <li><Link to='/myReviews'>My Reviews</Link></li>
               <li><Link onClick={handleSignOut}>Log Out</Link></li>
             </> :
               <>

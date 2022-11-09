@@ -11,7 +11,7 @@ const ReviewList = ({reviewData}) => {
             <tr>
               <th>
                 <label>
-                  <input type="checkbox" className="checkbox" />
+                  {/* <input type="button" className=""  value='X'/> */}
                 </label>
               </th>
               <td>
