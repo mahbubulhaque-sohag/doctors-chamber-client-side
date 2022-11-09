@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const MyReviewTable = ({data , handleDelete}) => {
+const MyReviewTable = ({data , handleDelete, handleUpdate}) => {
     // const [reviews, setReviews] =useState([data])
     // console.log(reviews)
 
@@ -17,6 +17,7 @@ const MyReviewTable = ({data , handleDelete}) => {
                 <input onClick={()=>handleDelete(data?._id)} type="button" className=""  value='DELETE'/>
             </label>
         </th>
+       
         <td>
             <div className="flex items-center space-x-3">
                 <div className="avatar">

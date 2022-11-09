@@ -7,7 +7,7 @@ const MyReviews = () => {
     const { user } = useContext(authContext);
 
     const [myReviewData, setMyReviewData] = useState([]);
-    
+
 
     useEffect(() => {
         fetch(`http://localhost:5000/review/${user?.displayName}`)
@@ -15,46 +15,52 @@ const MyReviews = () => {
             .then(data => setMyReviewData(data))
     }, [user])
 
-    const handleDelete =(id)=>{
+    const handleDelete = (id, e) => {
+        // e.preventDefault()
         // console.log(event.target.value)
-        fetch(`http://localhost:5000/review/${id}`,{
+        fetch(`http://localhost:5000/review/${id}`, {
             method: 'DELETE',
         })
-        .then(res=>res.json())
-        .then(restData => {
-            // if(restData.deleteCount > 0){
+            .then(res => res.json())
+            .then(restData => {
+                // if(restData.deleteCount > 0){
                 const remainingDatas = myReviewData.filter(review => review._id !== id)
                 setMyReviewData(remainingDatas)
-            // }
-        })
+                // }
+            })
     }
+
+
     return (
         <div>
-            <table className="table w-full">
+            {
+                myReviewData.length > 0 ? <div> <table className="table w-full">
 
-<thead>
-    <tr>
-        <th>
-            <label>
-<input type="checkbox" className="checkbox" />
-</label>
-        </th>
-        <th>Reviewed by</th>
+                <thead>
+                    <tr>
+                        <th>
+                            <label>
+                                {/* <input type="checkbox" className="checkbox" /> */}
+                            </label>
+                        </th>
 
-        <th> Reviews</th>
-    </tr>
-</thead>
+                        <th>Reviewed by</th>
 
-{
-    myReviewData?.map(data=> <MyReviewTable
-    key={data._id}
-    data={data}
-    handleDelete={handleDelete}
-    ></MyReviewTable>)
-}
+                        <th> Reviews</th>
+                    </tr>
+                </thead>
 
-            
-</table>
+                {
+                    myReviewData?.map(data => <MyReviewTable
+                        key={data._id}
+                        data={data}
+                        handleDelete={handleDelete}
+                    ></MyReviewTable>)
+                }
+
+
+            </table> </div> : <p className='mt-5 text-center'>No Review</p>
+            }
         </div>
     );
 };
