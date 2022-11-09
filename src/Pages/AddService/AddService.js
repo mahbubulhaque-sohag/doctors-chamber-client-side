@@ -4,7 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const AddService = () => {
 
-    const [services, serServices] = useState({});
+    const [services, setServices] = useState({});
     const handleAddService = event =>{
         event.preventDefault();
         console.log(services)
@@ -29,7 +29,7 @@ const AddService = () => {
         const field = event.target.name;
         const newServices = {...services};
         newServices[field] = value;
-        serServices(newServices);
+        setServices(newServices);
 
     } 
 

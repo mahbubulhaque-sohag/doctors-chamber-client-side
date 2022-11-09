@@ -3,10 +3,12 @@ import { useContext } from 'react';
 import { authContext } from '../../Context/AuthProvider/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
 
-    const { createNewUser } = useContext(authContext);
+    const { createNewUser,updateUserProfile } = useContext(authContext);
+    const navigate = useNavigate();
 
     const handleSignUp = event => {
         event.preventDefault();
@@ -20,10 +22,22 @@ const Register = () => {
                 const user = result.user;
                 console.log(user)
                 toast('You have successfully registered');
-                form.reset()
+                form.reset();
+                handleUpdateProfile(name, photoUrl)
+                navigate('/login')
             })
             .catch(err => console.error(err))
     }
+
+    const handleUpdateProfile = (name, photoURL) => {
+        const profile = {
+          displayName : name,
+          photoURL : photoURL
+        }
+        updateUserProfile(profile)
+        .then(()=>{})
+        .catch((error)=>console.error(error))
+      }
     return (
         <div className="hero w-full  bg-base-200">
             <div className="hero-content flex-col lg:flex-row-reverse">

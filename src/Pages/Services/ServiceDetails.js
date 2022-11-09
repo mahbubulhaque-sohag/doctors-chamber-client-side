@@ -12,7 +12,7 @@ const ServiceDetails = () => {
     return (
         <div>
             <SingleServiceDetails data={data}></SingleServiceDetails>
-         <Review></Review>
+         <Review data={data}></Review>
             
         </div>
     );
