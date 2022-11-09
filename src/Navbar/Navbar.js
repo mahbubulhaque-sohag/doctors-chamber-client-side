@@ -22,12 +22,13 @@ const Navbar = () => {
       <div className="flex-1">
         <Link className="btn btn-ghost normal-case text-xl">
           <img src={logo} alt='' />
-          <p><span className='text-red-600 text-3xl font-bold'>Doctor's</span> <span> Chamber</span></p>
+          <p><span className='text-red-600 text-3xl font-bold'>Dr. Moti's</span> <span> Chamber</span></p>
         </Link>
       </div>
       <div className="flex-none">
         <ul className="menu menu-horizontal p-0">
           <li><Link to='/'>Home</Link></li>
+          <li><Link to='/blog'>Blog</Link></li>
 
           {
             user?.uid ? <>

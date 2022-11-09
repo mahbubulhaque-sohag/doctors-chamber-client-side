@@ -56,14 +56,14 @@ const Review = ({ data }) => {
             })
     }, [reviewData])
     return (
-        <div>
+        <div className='mx-20'>
             {
                 reviewData ? <div className='mx-20'>
                 <div>
                     <h2 className='mt-5 text-3xl'>All reviews about: {reviewInfo.serviceName}</h2>
                 </div>
                 <div>
-                    <table className="table w-full">
+                    <table className="mx-20">
     
                         <thead>
                             <tr>

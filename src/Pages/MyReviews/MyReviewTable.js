@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const MyReviewTable = ({data , handleDelete, handleUpdate}) => {
     // const [reviews, setReviews] =useState([data])
@@ -15,6 +17,7 @@ const MyReviewTable = ({data , handleDelete, handleUpdate}) => {
         <th>
             <label>
                 <input onClick={()=>handleDelete(data?._id)} type="button" className=""  value='DELETE'/>
+                <ToastContainer />
             </label>
         </th>
        

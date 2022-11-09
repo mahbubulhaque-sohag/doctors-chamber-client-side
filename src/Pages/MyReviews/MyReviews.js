@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { authContext } from '../../Context/AuthProvider/AuthProvider';
 import MyReviewTable from './MyReviewTable';
+import {toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const MyReviews = () => {
 
@@ -24,6 +26,7 @@ const MyReviews = () => {
             .then(res => res.json())
             .then(restData => {
                 // if(restData.deleteCount > 0){
+                    toast(' successfully deleted!!');
                 const remainingDatas = myReviewData.filter(review => review._id !== id)
                 setMyReviewData(remainingDatas)
                 // }

@@ -28,7 +28,7 @@ const Home = () => {
         },
     ]
     return (
-        <div className='mt-3'>
+        <div className='mt-3 mx-20'>
             {/* home carousel start*/}
             <div className="carousel ">
                 {
@@ -53,8 +53,8 @@ const Home = () => {
                         service={service}></HomeServices>)
                 }
             </div>
-            <Link to='/services' className="card-actions justify-center">
-                <button className="btn btn-primary">See All</button>
+            <Link to='/services' className="card-actions text-red-700 text-5xl font-bold my-2 justify-center">
+               See All
             </Link>
         </div>
     );

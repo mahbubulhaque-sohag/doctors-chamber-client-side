@@ -1,4 +1,5 @@
 import AddService from "../../Pages/AddService/AddService";
+import Blog from "../../Pages/Blog/Blog";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import MyReviews from "../../Pages/MyReviews/MyReviews";
@@ -20,11 +21,15 @@ export const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home/>,
-                loader: ()=> fetch('http://localhost:5000/services/3')
+                loader: ()=> fetch('http://localhost:5000/servicesThree')
             },
             {
                 path: '/addService',
                 element: <AddService/>
+            },
+            {
+                path: '/blog',
+                element: <PrivateRoute><Blog/></PrivateRoute>
             },
             {
                 path: '/services',
