@@ -3,10 +3,14 @@ import { useContext } from 'react';
 import { authContext } from '../../Context/AuthProvider/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
-    const { login, googleLogin } = useContext(authContext);
+    const { login, googleLogin, setLoading } = useContext(authContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/' ;
 
    
 
@@ -20,7 +24,9 @@ const Login = () => {
                 const user = result.user;
                 console.log(user)
                 toast('You have successfully log in!!');
-                form.reset()
+                form.reset();
+              setLoading(false)
+                navigate(from, {replace: true})
             })
             .catch(err => console.error(err))
     }

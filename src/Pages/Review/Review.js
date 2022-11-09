@@ -3,21 +3,22 @@ import { authContext } from '../../Context/AuthProvider/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReviewList from './ReviewList';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ReviewField from './ReviewField'
 
 const Review = ({ data }) => {
-    const { user } = useContext(authContext);
+    const { user, loading } = useContext(authContext);
     const [text, setText] = useState('');
-    const [reviewData, setReviewData] = useState([])
+    const [reviewData, setReviewData] = useState([]);
+    const navigate = useNavigate();
     // console.log(data)
 
     const reviewInfo = {
         text: text,
         name: user?.displayName,
         picture: user?.photoURL,
-        serviceName: data.name,
-        serviceImage: data.photoUrl
+        serviceName: data?.name,
+        serviceImage: data?.photoUrl
     }
 
     const handleReview = event => {
@@ -35,6 +36,8 @@ const Review = ({ data }) => {
                 // console.log(data);
                 toast('Review added successfully');
                 event.target.reset();
+                // loading(false)
+                navigate('/review')
             })
     }
 
@@ -45,7 +48,7 @@ const Review = ({ data }) => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews/${data.name}`)
+        fetch(`http://localhost:5000/reviews/${data?.name}`)
             .then(res => res.json())
             .then(data => {
 
@@ -53,9 +56,9 @@ const Review = ({ data }) => {
             })
     }, [reviewData])
     return (
-        <div>
+        <div className='mx-20'>
             <div>
-                <h2>All reviews about: {reviewData.serviceName}</h2>
+                <h2 className='mt-5 text-3xl'>All reviews about: {reviewInfo.serviceName}</h2>
             </div>
             <div>
                 <table className="table w-full">
@@ -83,8 +86,10 @@ const Review = ({ data }) => {
                 <ReviewField handleOnBlur={handleOnBlur} handleReview={handleReview}></ReviewField>
                 </> :
                 <>
-                <h2>Want to give your review?</h2>
-                <Link to='/review'>Review</Link>
+                
+                <h2>Want to add your review?</h2>
+                <Link to='/login'>Login</Link>
+                {/* <Link to='/reviewField'>Review</Link> */}
                 </>
             }
         </div>
