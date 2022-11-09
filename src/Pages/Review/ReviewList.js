@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ReviewList = ({reviewData}) => {
-    console.log(reviewData)
+    // console.log(reviewData)
     const{text, name, picture, serviceName,serviceImage} = reviewData;
     
    

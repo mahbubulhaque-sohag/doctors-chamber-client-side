@@ -15,7 +15,7 @@ const Services = () => {
             <h2 className='text-3xl my-3'>This is my all services</h2>
             <div className='grid lg:grid-cols-3 sm:grid-cols-1 gap-5'>
                 {
-                  allService.map(singleService =><ServiceCard
+                  allService?.map(singleService =><ServiceCard
                   key={singleService._id}
                   singleService={singleService}></ServiceCard>)  
                 }

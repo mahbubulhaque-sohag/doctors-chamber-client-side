@@ -48,7 +48,7 @@ const Home = () => {
             <h1 className='text-center my-3'>My Services</h1>
             <div className='mx-10 lg:flex gap-2'>
                 {
-                    services.map(service => <HomeServices
+                    services?.map(service => <HomeServices
                         key={service._id}
                         service={service}></HomeServices>)
                 }
