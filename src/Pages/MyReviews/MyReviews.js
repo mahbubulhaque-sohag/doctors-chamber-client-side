@@ -14,6 +14,20 @@ const MyReviews = () => {
             .then(res => res.json())
             .then(data => setMyReviewData(data))
     }, [user])
+
+    const handleDelete =(id)=>{
+        // console.log(event.target.value)
+        fetch(`http://localhost:5000/review/${id}`,{
+            method: 'DELETE',
+        })
+        .then(res=>res.json())
+        .then(restData => {
+            // if(restData.deleteCount > 0){
+                const remainingDatas = myReviewData.filter(review => review._id !== id)
+                setMyReviewData(remainingDatas)
+            // }
+        })
+    }
     return (
         <div>
             <table className="table w-full">
@@ -21,9 +35,9 @@ const MyReviews = () => {
 <thead>
     <tr>
         <th>
-            {/* <label>
+            <label>
 <input type="checkbox" className="checkbox" />
-</label> */}
+</label>
         </th>
         <th>Reviewed by</th>
 
@@ -34,7 +48,9 @@ const MyReviews = () => {
 {
     myReviewData?.map(data=> <MyReviewTable
     key={data._id}
-    data={data}></MyReviewTable>)
+    data={data}
+    handleDelete={handleDelete}
+    ></MyReviewTable>)
 }
 
             

@@ -11,7 +11,7 @@ const Review = ({ data }) => {
     const [text, setText] = useState('');
     const [reviewData, setReviewData] = useState([]);
     const navigate = useNavigate();
-    // console.log(data)
+    // console.log(reviewData)
 
     const reviewInfo = {
         text: text,
@@ -56,41 +56,45 @@ const Review = ({ data }) => {
             })
     }, [reviewData])
     return (
-        <div className='mx-20'>
-            <div>
-                <h2 className='mt-5 text-3xl'>All reviews about: {reviewInfo.serviceName}</h2>
-            </div>
-            <div>
-                <table className="table w-full">
-
-                    <thead>
-                        <tr>
-                            <th>
-                                {/* <label>
-                                    <input type="checkbox" className="checkbox" />
-                                </label> */}
-                            </th>
-                            <th>Reviewed by</th>
-
-                            <th> Reviews</th>
-                        </tr>
-                    </thead>
-                    {/* <ReviewList></ReviewList> */}
-                    {
-                        reviewData.map(data => <ReviewList key={data._id} reviewData={data} />)
-                    }
-                </table>
-            </div>
+        <div>
             {
-                user?.uid ? <>
-                <ReviewField handleOnBlur={handleOnBlur} handleReview={handleReview}></ReviewField>
-                </> :
-                <>
-                
-                <h2>Want to add your review?</h2>
-                <Link to='/login'>Login</Link>
-                {/* <Link to='/reviewField'>Review</Link> */}
-                </>
+                reviewData ? <div className='mx-20'>
+                <div>
+                    <h2 className='mt-5 text-3xl'>All reviews about: {reviewInfo.serviceName}</h2>
+                </div>
+                <div>
+                    <table className="table w-full">
+    
+                        <thead>
+                            <tr>
+                                <th>
+                                    {/* <label>
+                                        <input type="checkbox" className="checkbox" />
+                                    </label> */}
+                                </th>
+                                <th>Reviewed by</th>
+    
+                                <th> Reviews</th>
+                            </tr>
+                        </thead>
+                        {/* <ReviewList></ReviewList> */}
+                        {
+                            reviewData.map(data => <ReviewList key={data._id} reviewData={data} />)
+                        }
+                    </table>
+                </div>
+                {
+                    user?.uid ? <>
+                    <ReviewField handleOnBlur={handleOnBlur} handleReview={handleReview}></ReviewField>
+                    </> :
+                    <>
+                    
+                    <h2>Want to add your review?</h2>
+                    <Link to='/login'>Login</Link>
+                    {/* <Link to='/reviewField'>Review</Link> */}
+                    </>
+                }
+            </div>  : <p>No Review</p>
             }
         </div>
     );

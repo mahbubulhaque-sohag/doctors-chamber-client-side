@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const MyReviewTable = ({data}) => {
-    console.log(data)
+const MyReviewTable = ({data , handleDelete}) => {
+    // const [reviews, setReviews] =useState([data])
+    // console.log(reviews)
+
+    
+
     return (
         // <div>
      
@@ -10,7 +14,7 @@ const MyReviewTable = ({data}) => {
     <tr>
         <th>
             <label>
-                {/* <input type="button" className=""  value='X'/> */}
+                <input onClick={()=>handleDelete(data?._id)} type="button" className=""  value='DELETE'/>
             </label>
         </th>
         <td>
